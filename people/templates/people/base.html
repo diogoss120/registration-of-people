@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People</title>
+    <link rel="stylesheet" href=" {% static 'css/style.css' %} ">
+</head>
+
+<body>
+    <h1>Hello this is de base.html</h1>
+    <main>
+        {% block content %}
+
+        {% endblock content %}
+    </main>
+
+    {% block script %}{% endblock script %}
+</body>
+
+</html>

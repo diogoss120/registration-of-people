@@ -1,0 +1,47 @@
+{% extends "people/base.html" %}
+{% load static %}
+
+{% block content %}
+<div>
+    <button class="btn-new-person">New Person</button>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>last name</th>
+            <th>Years old</th>
+            <th>Birth</th>
+            <th>Email</th>
+            <th>Nickname</th>
+            <th>Obervation</th>
+        </tr>
+
+
+        {% for person in people %}
+        <tr class="person" data-id="{{ person.id }}">
+            <td>{{ person.id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.last_name }}</td>
+            <td>{{ person.years_old }}</td>
+            <td>{{ person.birth }}</td>
+            <td>{{ person.email }}</td>
+            <td>{% if person.nickname != None %}
+                {{ person.nickname }}
+                {% endif %}
+            </td>
+            <td>{% if person.obervation != None %}
+                {{ person.obervation }}
+                {% endif %}
+            </td>
+
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script src=" {% static 'javascript/home.js' %}"></script>
+{% endblock script %}

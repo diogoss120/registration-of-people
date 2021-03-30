@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-new-person {
+    background: rgb(0, 189, 10);
+    cursor: pointer;
+    color: white;
+    margin: 8px 0;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+table,
+th,
+td,
+tr {
+    width: auto;
+    border: 2px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+th {
+    background: rgb(32, 144, 172);
+}
+
+.person:hover {
+    background: rgb(126, 125, 125);
+    cursor: pointer;
+    color: white;
+}
