@@ -11,7 +11,9 @@ def get_people(request):
 
         list_people.append(person)
 
-    data = {"people" : list_people}
+    data = {}
+    data['message'] = 'Select the person that you want'
+    data["people"] = list_people
 
     return render(request, "people/home.html", data)
 

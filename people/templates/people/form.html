@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<h1>{{ message }}</h1>
+<h2>{{ message }}</h2>
 
 <form method="POST">
 
@@ -10,7 +10,8 @@
 
     {{ form.as_p }}
 
-    <button class="btnSubmit" type="submit">Salvar</button>
+    <button class="btn-submit btnSubmit" type="submit">Salvar</button>
+    <button class="btn-alert getName">Get Name</button>
 </form>
 
 <br>
