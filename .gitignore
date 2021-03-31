@@ -4,3 +4,4 @@ venv/
 env/
 people/__pycache__/
 people/migrations
+people_control/__pycache__

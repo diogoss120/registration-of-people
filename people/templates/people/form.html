@@ -9,11 +9,15 @@
     {% csrf_token %}
 
     {{ form.as_p }}
-
-    <button class="btn-submit" type="submit">Salvar</button>
+    <div class="buttons">
+        <button class="btn-submit" type="submit">Save</button>
+        {% if type == 'new' %}
+        <button class="btn-get-name" type="button">Generate Name</button>
+        {% endif %}
+        <button class="btn-delete" type="button">Delete</button>
+    </div>
 </form>
 
-<button class="btn-alert">Get Name</button>
 <br>
 <a href="/people">return to list</a>
 

@@ -1,23 +1,30 @@
-document.querySelector("input[name='obervation']").required = false;
+document.querySelector("textarea[name='obervation']").required = false;
 document.querySelector("input[name='nickname']").required = false;
 
-document.querySelector(".btn-alert").addEventListener("click", e => {
+let form = document.querySelector('form');
 
-    let form = document.querySelector('form');
-    e.preventDefault();
-    form.action = '/get_name/';
-    form.submit();
+let btn_get_name = document.querySelector(".btn-get-name")
+let btn_submit = document.querySelector(".btn-submit");
 
-});
+if (btn_get_name) {
+    btn_get_name.addEventListener("click", e => {
+        
+        e.preventDefault();
+        form.action = '/get-name/';
+        form.submit();
 
-document.querySelector(".btn-submit").addEventListener("click", e => {
+    });
 
-    let form = document.querySelector('form');
-    e.preventDefault();
-    form.action = '/';
-    form.submit();
-
-});
+    if (btn_submit) {
+        btn_submit.addEventListener("click", e => {
+            
+            e.preventDefault();
+            form.action = 'http://127.0.0.1:8000/';
+            form.submit();
+            
+        });
+    }
+}
 
 
 function getNameFromAPI() {

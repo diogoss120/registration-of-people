@@ -4,8 +4,8 @@ from people.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', register_person, name='url_register_people'),
-    path('people/', get_people, name='url_get_people'),
-    path('edit-person/<int:id>', edit_person, name='url_edit_people'),
-    path('get_name/', get_name)
+    path('', new_person, name='url_new_people'),
+    path('people/', list_of_people, name='url_list_people'),
+    path('edit-person/<int:id>/', update_person, name='url_edit_people'),
+    path('get-name/', get_name)
 ]
