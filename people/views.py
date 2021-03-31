@@ -46,6 +46,7 @@ def update_person(request, id: int):
     data = {}  # dictionary with information that will be sent to template
     data['form'] = form
     data['type'] = 'edit'
+    data['id_person'] = id
     data['message'] = 'Edit the Person selected'
 
     return render(request, 'people/form.html', data)
@@ -82,3 +83,8 @@ def get_name(request):  # a method python that will get aleators names in web ap
     data['type'] = 'new'
     data['message'] = 'Register a new Person'
     return render(request, 'people/form.html', data)
+
+def delete_person(request, id: int):
+    person = Person.objects.get(pk=id)
+    person.delete()
+    return redirect('url_list_people')
