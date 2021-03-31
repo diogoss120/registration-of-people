@@ -37,6 +37,7 @@ main {
 
 .btn-alert {
     background-color: rgb(211, 255, 52);
+    color: black;
 }
 
 table,
