@@ -11,7 +11,7 @@ def list_of_people(request):
     people = Person.objects.all()  # getting all the people in database
 
     data = {}  # dictionary with information that will be sent to template
-    data['message'] = 'Select the person that you want'
+    data['message'] = 'Create a new person'
     data["people"] = people
     return render(request, path_home, data)
 
@@ -93,6 +93,6 @@ def delete_person(request, id: int):
 def search(request, text: str):
     people = Person.objects.filter(name__icontains=text)
     data = {}  # dictionary with information that will be sent to template
-    data['message'] = 'Select the person that you want'
+    data['message'] = 'Create a new person'
     data["people"] = people
     return render(request, path_home, data)

@@ -3,66 +3,55 @@
 
 {% block content %}
 
+<div class="options">
+
+    <div>
+        <input class="input_search" placeholder="Search here for people's Names" type="text" name="search" id="">
+        <button id="btn_search" class="btn-search" type="button">Search</button>
+        <button class="btn-new-person">New Person</button>
+    </div>
+    <a href="/people">Return to all</a>
+
+</div>
+
 {% if not people %}
 
-<div>
-    <h3>No one was register</h3>
-</div>
-
-<button class="btn-submit btn-new-person">New Person</button>
+<h3>No one was register</h3>
 
 {% else %}
-<div>
-    <div class="options">
 
-        <div>
-            <h2>
-                {{ message}}
-            </h2>
-            <button class="btn-submit btn-new-person">New Person</button>
-        </div>
-
-        <div>
-            <input class="input_search" placeholder="Search here for people's Names" type="text" name="search" id="">
-            <button id="btn_search" class="btn-submit" type="button">Search</button> <br>
-            <a href="/people">Return to all</a>
-        </div>
-
-    </div>
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>last name</th>
-            <th>Years old</th>
-            <th>Birth</th>
-            <th>Email</th>
-            <th>Nickname</th>
-            <th>Obervation</th>
-        </tr>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>last name</th>
+        <th>Years old</th>
+        <th>Birth</th>
+        <th>Email</th>
+        <th>Nickname</th>
+        <th>Obervation</th>
+    </tr>
 
 
-        {% for person in people %}
-        <tr class="person" data-id="{{ person.id }}">
-            <td>{{ person.name }}</td>
-            <td>{{ person.last_name }}</td>
-            <td>{{ person.years_old }}</td>
-            <td class="birth">{{ person.birth }}</td>
-            <td>{{ person.email }}</td>
-            <td>{% if person.nickname != None %}
-                {{ person.nickname }}
-                {% endif %}
-            </td>
-            <td>{% if person.obervation != None %}
-                {{ person.obervation }}
-                {% endif %}
-            </td>
+    {% for person in people %}
+    <tr class="person" data-id="{{ person.id }}">
+        <td>{{ person.name }}</td>
+        <td>{{ person.last_name }}</td>
+        <td>{{ person.years_old }}</td>
+        <td class="birth">{{ person.birth }}</td>
+        <td>{{ person.email }}</td>
+        <td>{% if person.nickname != None %}
+            {{ person.nickname }}
+            {% endif %}
+        </td>
+        <td>{% if person.obervation != None %}
+            {{ person.obervation }}
+            {% endif %}
+        </td>
 
-        </tr>
-        {% endfor %}
+    </tr>
+    {% endfor %}
 
-    </table>
-</div>
+</table>
 
 {% endif %}
 

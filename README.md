@@ -2,7 +2,7 @@
 
 <p>
 Esse é um projeto em Django de um sistema de cadastro de pessoas utilizando a linguagem de programação Python e o framework Django.
-O acesso ao banco de dados SQlite foi feito totalmente pelo ORM do Django, a estrutura sql do banco também está disponível nesse projeto. 
+O acesso ao banco de dados SQLite foi feito totalmente pelo ORM do Django, a estrutura sql do banco também está disponível nesse projeto, mas não sera preciso criar o banco ele está dentro do projeto. 
 </p>
 
 
