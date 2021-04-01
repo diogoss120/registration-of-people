@@ -1,5 +1,6 @@
 document.querySelector("textarea[name='obervation']").required = false;
 document.querySelector("input[name='nickname']").required = false;
+document.querySelector("input[name='birth']").type = 'date';
 
 let form = document.querySelector('form');
 

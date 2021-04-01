@@ -2,6 +2,16 @@
 {% load static %}
 
 {% block content %}
+
+{% if not people %}
+
+<div>
+    <h3>No one was register</h3>
+</div>
+
+<button class="btn-submit btn-new-person">New Person</button>
+
+{% else %}
 <div>
     <h2>
         {{ message}}
@@ -26,7 +36,7 @@
             <td>{{ person.name }}</td>
             <td>{{ person.last_name }}</td>
             <td>{{ person.years_old }}</td>
-            <td>{{ person.birth }}</td>
+            <td class="birth" >{{ person.birth }}</td>
             <td>{{ person.email }}</td>
             <td>{% if person.nickname != None %}
                 {{ person.nickname }}
@@ -42,6 +52,8 @@
 
     </table>
 </div>
+
+{% endif %}
 
 {% endblock content %}
 

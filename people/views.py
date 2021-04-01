@@ -1,21 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Person
 from .form import PersonForm
 import requests
 
+path_form = "people/form.html"
+
 
 def list_of_people(request):
+    people = Person.objects.all()  # getting all the people in database
 
-    list_people = []
-    people = Person.objects.all()
-
-    for person in people:
-        list_people.append(person)
-
-    data = {} # dictionary with information that will be sent to template
+    data = {}  # dictionary with information that will be sent to template
     data['message'] = 'Select the person that you want'
-    data["people"] = list_people
-
+    data["people"] = people
     return render(request, "people/home.html", data)
 
 
@@ -26,30 +22,32 @@ def new_person(request):
         form.save()
         return redirect('url_list_people')
 
-    data = {} # dictionary with information that will be sent to template
+    data = {}  # dictionary with information that will be sent to template
     data['form'] = form
     data['type'] = 'new'
     data['message'] = 'Register a new Person'
 
-    return render(request, 'people/form.html', data)
+    return render(request, path_form, data)
 
 
-def update_person(request, id: int):
+def edit_person(request, id: int):
 
-    person = Person.objects.get(pk=id)  # getting a person that is in edition
+    # getting a person that is in edition
+    person = get_object_or_404(Person, pk=id)
+
     form = PersonForm(request.POST or None, instance=person)
 
-    if form.is_valid(): # validate form and save if ok
+    if form.is_valid():  # validate form and save if ok
         form.save()
         return redirect('url_list_people')
 
     data = {}  # dictionary with information that will be sent to template
     data['form'] = form
     data['type'] = 'edit'
-    data['id_person'] = id
+    data['id_person'] = person.id
     data['message'] = 'Edit the Person selected'
 
-    return render(request, 'people/form.html', data)
+    return render(request, path_form, data)
 
 
 def get_name(request):  # a method python that will get aleators names in web api
@@ -82,9 +80,11 @@ def get_name(request):  # a method python that will get aleators names in web ap
     data["form"] = form
     data['type'] = 'new'
     data['message'] = 'Register a new Person'
-    return render(request, 'people/form.html', data)
+    return render(request, path_form, data)
+
 
 def delete_person(request, id: int):
-    person = Person.objects.get(pk=id)
+    # getting the id and deleting of database
+    person = get_object_or_404(Person, pk=id)
     person.delete()
     return redirect('url_list_people')
