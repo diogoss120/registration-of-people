@@ -1,59 +1,39 @@
-document.querySelector("textarea[name='obervation']").required = false;
-document.querySelector("input[name='nickname']").required = false;
-document.querySelector("input[name='birth']").type = 'date';
-
-let form = document.querySelector('form');
-
-let btn_get_name = document.querySelector(".btn-get-name");
-let btn_submit = document.querySelector(".btn-submit");
-let btn_delete = document.querySelector(".btn-delete");
-
-if (btn_get_name) {
-    btn_get_name.addEventListener("click", e => {
-        changeFormAction(e, '/get-name/');
-    });
-
-    btn_submit.addEventListener("click", e => {
-        changeFormAction(e, '/');
-    });
-}
-
-if (btn_delete) {
-    let id = btn_delete.dataset.id_person;
-    console.log('id person: ', id);
-    btn_delete.addEventListener('click', e => {
-        location.href = `/delete/${id}`;
-    })
-}
-
-function changeFormAction(event, path) {
-
-    event.preventDefault();
-    form.action = path;
-    form.submit();
-
-}
-
-function getNameFromAPI() {
-    let url = 'http://gerador-nomes.herokuapp.com/nome/aleatorio';
-
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    const options = {
-        method: 'GET',
-        mode: 'no-cors',
-        //headers: myHeaders,
+class Form {
+    constructor() {
+        this.form = document.querySelector('form');
+        this.btn_get_name = document.querySelector(".btn-get-name");
+        this.btn_submit = document.querySelector(".btn-submit");
+        this.btn_delete = document.querySelector(".btn-delete");
+        this.events();
     }
 
-    fetch(url, options)
-        .then(response => {
-            return response.text()
-        })
-        .then((data) => {
-            console.log(data) //console.log(data ? JSON.parse(data) : {})
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+    events() {
+        document.querySelector("textarea[name='obervation']").required = false;
+        document.querySelector("input[name='nickname']").required = false;
+        document.querySelector("input[name='birth']").type = 'date';
 
+        if (this.btn_get_name) {
+            this.btn_get_name.addEventListener("click", e => {
+                this.changeFormAction(e, '/get-name/');
+            });
+
+            this.btn_submit.addEventListener("click", e => {
+                this.changeFormAction(e, '/');
+            });
+        }
+
+        if (this.btn_delete) {
+            let id = this.btn_delete.dataset.id_person;
+            this.btn_delete.addEventListener('click', e => {
+                location.href = `/delete/${id}`;
+            })
+        }
+    }
+    changeFormAction(event, path) {
+        event.preventDefault();
+        this.form.action = path;
+        this.form.submit();
+    }
 }
+
+let form = new Form();

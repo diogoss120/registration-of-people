@@ -4,6 +4,7 @@ from .form import PersonForm
 import requests
 
 path_form = "people/form.html"
+path_home = "people/home.html"
 
 
 def list_of_people(request):
@@ -12,7 +13,7 @@ def list_of_people(request):
     data = {}  # dictionary with information that will be sent to template
     data['message'] = 'Select the person that you want'
     data["people"] = people
-    return render(request, "people/home.html", data)
+    return render(request, path_home, data)
 
 
 def new_person(request):
@@ -88,3 +89,10 @@ def delete_person(request, id: int):
     person = get_object_or_404(Person, pk=id)
     person.delete()
     return redirect('url_list_people')
+
+def search(request, text: str):
+    people = Person.objects.filter(name__icontains=text)
+    data = {}  # dictionary with information that will be sent to template
+    data['message'] = 'Select the person that you want'
+    data["people"] = people
+    return render(request, path_home, data)

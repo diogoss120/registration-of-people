@@ -13,13 +13,25 @@
 
 {% else %}
 <div>
-    <h2>
-        {{ message}}
-    </h2>
-    <button class="btn-submit btn-new-person">New Person</button>
+    <div class="options">
+
+        <div>
+            <h2>
+                {{ message}}
+            </h2>
+            <button class="btn-submit btn-new-person">New Person</button>
+        </div>
+
+        <div>
+            <input class="input_search" placeholder="Search here for people's Names" type="text" name="search" id="">
+            <button id="btn_search" class="btn-submit" type="button">Search</button> <br>
+            <a href="/people">Return to all</a>
+        </div>
+
+    </div>
+
     <table>
         <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>last name</th>
             <th>Years old</th>
@@ -32,11 +44,10 @@
 
         {% for person in people %}
         <tr class="person" data-id="{{ person.id }}">
-            <td>{{ person.id }}</td>
             <td>{{ person.name }}</td>
             <td>{{ person.last_name }}</td>
             <td>{{ person.years_old }}</td>
-            <td class="birth" >{{ person.birth }}</td>
+            <td class="birth">{{ person.birth }}</td>
             <td>{{ person.email }}</td>
             <td>{% if person.nickname != None %}
                 {{ person.nickname }}

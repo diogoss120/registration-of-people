@@ -8,5 +8,6 @@ urlpatterns = [
     path('people/', list_of_people, name='url_list_people'),
     path('edit-person/<int:id>/', edit_person, name='url_edit_people'),
     path('get-name/', get_name),
-    path('delete/<int:id>', delete_person, name='url_delete_person'),
+    path('delete/<int:id>/', delete_person, name='url_delete_person'),
+    path('search/<str:text>/', search, name='url_search_person'),
 ]

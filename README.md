@@ -1,7 +1,8 @@
 <h1 align="center">Registration of People</h1>
 
 <p>
-Esse é um projeto em Django de um sistema de cadastro de pessoas, utilizando a linguagem de programação Python e o framework Django
+Esse é um projeto em Django de um sistema de cadastro de pessoas utilizando a linguagem de programação Python e o framework Django.
+O acesso ao banco de dados SQlite foi feito totalmente pelo ORM do Django, a estrutura sql do banco também está disponível nesse projeto. 
 </p>
 
 
@@ -48,3 +49,4 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [JavaScript](https://www.javascript.com/)
 - [Html](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [SQlite](https://www.sqlite.org/index.html)

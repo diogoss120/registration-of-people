@@ -61,7 +61,7 @@ tr {
     width: auto;
     border: 2px solid rgb(0, 0, 0);
     border-collapse: collapse;
-    padding: 10px 15px;
+    padding: 7px 10px;
     text-align: center;
 }
 
@@ -87,6 +87,20 @@ form input, form textarea {
     padding: 4px;
     font-style: inherit;
     margin-bottom: 6px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+}
+
+.input_search{
+    height: 33px;
+    width: 250px;
+    padding: 7px;
+    font-style: inherit; 
 }
 
 form textarea {
