@@ -25,7 +25,7 @@ class Form {
         if (this.btn_delete) {
             let id = this.btn_delete.dataset.id_person;
             this.btn_delete.addEventListener('click', e => {
-                location.href = `/delete/${id}`;
+                 this.changeFormAction(e, `/delete/${id}/`);
             })
         }
     }

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Person(models.Model):
     name = models.CharField(max_length=30)
@@ -11,6 +12,9 @@ class Person(models.Model):
     
     def __str__(self) -> str:
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('edit-person', args=[int(self.id)])
 
     class Meta:
         verbose_name_plural = 'People'

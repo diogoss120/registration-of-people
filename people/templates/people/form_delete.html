@@ -1,0 +1,24 @@
+
+
+{% extends "people/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3>You are sure that you want delete <br> {{ object.name }} {{ object.last_name }}?</h3>
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ object.as_p }}
+    
+    <div class="buttons">
+        <button class="btn-delete" type="submit">Delete</button>
+    </div>
+
+</form>
+
+<br>
+<a href="/people">Return to list</a>
+
+{% endblock content %}

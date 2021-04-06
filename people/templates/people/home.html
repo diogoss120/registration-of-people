@@ -14,7 +14,7 @@
 
 </div>
 
-{% if not people %}
+{% if not object_list  %}
 
 <h3>No one was register</h3>
 
@@ -32,7 +32,7 @@
     </tr>
 
 
-    {% for person in people %}
+    {% for person in object_list  %}
     <tr class="person" data-id="{{ person.id }}">
         <td>{{ person.name }}</td>
         <td>{{ person.last_name }}</td>
