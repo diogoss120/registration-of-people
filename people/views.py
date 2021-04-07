@@ -3,6 +3,8 @@ from .models import Person
 from .form import PersonForm
 import requests
 
+from django.http import JsonResponse
+
 from django.views.generic.base import TemplateView, View
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, FormView, CreateView, DeleteView
@@ -18,11 +20,13 @@ class HomePageView(ListView):
     template_name = path_home  # a template that the view will return
     model = Person  # a model class necessary
 
+
 class PersonCreateView(CreateView):
     template_name = path_form
     model = Person
     form_class = PersonForm  # explicit indication of the people form
     type_form = 'new'  # return custom inforation for the template
+    message = 'Create a new person'
 
     def get_success_url(self):  # redirect the page after the action
         return reverse('url_list_people')
@@ -33,7 +37,7 @@ class PersonUpdateView(UpdateView):
     model = Person
     form_class = PersonForm
     success_url = "/people/"  # other option for redirect the page after action
-
+    message = 'Edit the person selected'
 
 class PersonDeleteView(DeleteView):
     template_name = path_form_delete
@@ -55,6 +59,12 @@ class GenerateNameView(View):
     type_form = 'new'
     form_class = PersonForm
 
+    def get(self, request, *args, **kwargs):
+        """
+        returning a json that will be used in names fields
+        """
+        return JsonResponse(self.get_data_from_api(), safe=False)
+
     def get_data_from_api(self):
         url = 'http://gerador-nomes.herokuapp.com/nome/aleatorio'  # url of api
         r = requests.get(url)  # will make request to api
@@ -66,24 +76,3 @@ class GenerateNameView(View):
             names_list = eval(r.text)
 
         return names_list
-
-    def post(self, request, *args, **kwargs):
-        person = Person
-        my_names = self.get_data_from_api()
-        # setting data of api
-        person.name = my_names[0]  # setting name
-        person.last_name = my_names[1] + " " + my_names[2]  # setting last name
-
-        # getting existent data of form
-        person.years_old = request.POST["years_old"]
-        person.birth = request.POST["birth"]
-        person.email = request.POST["email"]
-        person.nickname = request.POST["nickname"]
-        person.obervation = request.POST["obervation"]
-
-        # returning dict with data
-        context = {}
-        context["view"] = self
-        context['form'] = self.form_class(instance=person)
-
-        return render(request, path_form, context)

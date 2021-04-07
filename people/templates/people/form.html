@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<h2>{{ message }}</h2>
+<h3>{{ view.message }}</h3>
 
 <form method="POST">
 
@@ -11,9 +11,8 @@
     {{ form.as_p }}
     <div class="buttons">
         <button class="btn-submit" type="submit">Save</button>
-        {% if view.type_form == 'new' %}
         <button class="btn-get-name" type="button">Generate Name</button>
-        {% else %}
+        {% if view.type_form != 'new' %}
         <button data-id_person="{{ object.id }}" class="btn-delete" type="button">Delete</button>
         {% endif %}
 
