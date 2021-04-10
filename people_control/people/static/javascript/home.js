@@ -29,6 +29,8 @@ class Home {
             let text = this.inputSearch.value;
             if (e.key === "Enter" && text != '') {
                 location.href = `/search/${text}`;
+            } else if (e.key === "Enter" && text == ''){
+                location.href = `/people`;
             }
         })
 
@@ -37,6 +39,8 @@ class Home {
             let text = this.inputSearch.value;
             if (text != '') {
                 location.href = `/search/${text}`;
+            } else {
+                location.href = `/people`;
             }
         });
 

@@ -49,6 +49,7 @@ class PersonDeleteView(DeleteView):
 
 
 class SearchPeopleView(ListView):
+    context_object_name = 'person_list'
     template_name = path_home
 
     def get_queryset(self): # an override on the native django method  
